@@ -4,6 +4,7 @@ import classes from "./MainNavigation.module.css";
 import { useUser } from "@auth0/nextjs-auth0";
 
 function MainNavigation() {
+  /* eslint-disable @next/next/no-html-link-for-pages*/
   const { user, isLoading } = useUser();
 
   return (
