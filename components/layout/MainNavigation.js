@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import classes from "./MainNavigation.module.css";
 import { useUser } from "@auth0/nextjs-auth0";
+import { Fragment } from "react";
 
 function MainNavigation() {
   /* eslint-disable @next/next/no-html-link-for-pages*/
@@ -18,12 +19,16 @@ function MainNavigation() {
           <li>
             <Link href="/new-meetup">Add New Meetup</Link>
           </li>
-          <li>
-            <Link href="/expenses">All Expenses</Link>
-          </li>
-          <li>
-            <Link href="/new-expense">Add New Expense</Link>
-          </li>
+          {user && (
+            <Fragment>
+              <li>
+                <Link href="/expenses">All Expenses</Link>
+              </li>
+              <li>
+                <Link href="/new-expense">Add New Expense</Link>
+              </li>
+            </Fragment>
+          )}
           <li>{!isLoading && !user && <a href="/api/auth/login">Log in</a>}</li>
           <li>{user && <span>{user.name}</span>}</li>
           <li>{user && <a href="/api/auth/logout">Log out</a>}</li>

@@ -2,8 +2,10 @@ import { useRef } from 'react';
 
 import Card from '../ui/Card';
 import classes from './NewExpenseForm.module.css';
+import { useUser } from "@auth0/nextjs-auth0";
 
 function NewExpenseForm(props) {
+  const { user } = useUser();
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const addressInputRef = useRef();
@@ -22,6 +24,7 @@ function NewExpenseForm(props) {
       image: enteredImage,
       address: enteredAddress,
       description: enteredDescription,
+      user_email: user.email
     };
 
     props.onAddExpense(expenseData);
