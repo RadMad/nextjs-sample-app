@@ -10,6 +10,16 @@ function ExpenseItem(props) {
     router.push('/expenses/' + props.id);
   }
 
+  async function deleteHandler() {
+    await fetch(`/api/expenses/${props.id}/`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    router.push('/expenses/');
+  }
+
   return (
     <li className={classes.item}>
       <Card>
@@ -22,6 +32,7 @@ function ExpenseItem(props) {
         </div>
         <div className={classes.actions}>
           <button onClick={editDetailsHandler}>Edit</button>
+          <button onClick={deleteHandler}>Delete</button>
         </div>
       </Card>
     </li>
