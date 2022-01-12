@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import NewExpenseForm from '../../../components/expenses/NewExpenseForm';
+import NewExpenseForm from '../../components/expenses/NewExpenseForm';
 
 function NewExpensePage() {
   const router = useRouter();
