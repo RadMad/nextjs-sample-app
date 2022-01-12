@@ -25,7 +25,7 @@ function MainNavigation() {
                 <Link href="/expenses">All Expenses</Link>
               </li>
               <li>
-                <Link href="/new-expense">Add New Expense</Link>
+                <Link href="/expenses/new">Add New Expense</Link>
               </li>
             </Fragment>
           )}

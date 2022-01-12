@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 
-// /api/new-expense
-// POST /api/new-expense
+// /api/expenses/new
+// POST /api/expenses/new
 
 async function handler(req, res) {
   if (req.method === 'POST') {

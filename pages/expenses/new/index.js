@@ -1,15 +1,15 @@
-// our-domain.com/new-expense
+// our-domain.com/expenses/new
 import { Fragment } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import NewExpenseForm from '../../components/expenses/NewExpenseForm';
+import NewExpenseForm from '../../../components/expenses/NewExpenseForm';
 
 function NewExpensePage() {
   const router = useRouter();
 
   async function addExpenseHandler(enteredExpenseData) {
-    const response = await fetch('/api/new-expense', {
+    const response = await fetch('/api/expenses/new', {
       method: 'POST',
       body: JSON.stringify(enteredExpenseData),
       headers: {
