@@ -5,7 +5,6 @@ import classes from './NewExpenseForm.module.css';
 import { useUser } from "@auth0/nextjs-auth0";
 
 function NewExpenseForm(props) {
-  console.log(props);
   const { user } = useUser();
   const titleInputRef = useRef();
   const imageInputRef = useRef();
@@ -28,7 +27,7 @@ function NewExpenseForm(props) {
       user_email: user.email
     };
 
-    props.onAddExpense(expenseData);
+    props.expense?.id ? props.onEditExpense(expenseData) : props.onAddExpense(expenseData);
   }
 
   return (
@@ -40,7 +39,7 @@ function NewExpenseForm(props) {
         </div>
         <div className={classes.control}>
           <label htmlFor='image'>Expense Image</label>
-          <input type='url' required id='image' ref={imageInputRef} />
+          <input type='url' required id='image' ref={imageInputRef} defaultValue={props.expense?.image}/>
         </div>
         <div className={classes.control}>
           <label htmlFor='address'>Address</label>
@@ -57,7 +56,7 @@ function NewExpenseForm(props) {
           ></textarea>
         </div>
         <div className={classes.actions}>
-          <button>Add Expense</button>
+          <button>{props.expense?.id ? `Save` : `Add`} Expense</button>
         </div>
       </form>
     </Card>

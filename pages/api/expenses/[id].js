@@ -11,7 +11,7 @@ async function handler(req, res) {
     const db = client.db();
     const expensesCollection = db.collection("expenses");
     const data = req.body;
-    const result = await expensesCollection.updateOne({ _id: ObjectId(req.query) }, data);
+    const result = await expensesCollection.replaceOne({ _id: ObjectId(req.query) }, data);
 
     console.log(result);
 

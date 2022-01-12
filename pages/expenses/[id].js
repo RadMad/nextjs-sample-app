@@ -57,7 +57,7 @@ export async function getServerSideProps(context) {
         title: expense.title,
         address: expense.address,
         image: expense.image,
-        //id: expense._id.toString(),
+        id: expense._id.toString(),
         description: expense.description,
       },
     },
