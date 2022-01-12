@@ -5,6 +5,7 @@ import classes from './NewExpenseForm.module.css';
 import { useUser } from "@auth0/nextjs-auth0";
 
 function NewExpenseForm(props) {
+  console.log(props);
   const { user } = useUser();
   const titleInputRef = useRef();
   const imageInputRef = useRef();
@@ -35,7 +36,7 @@ function NewExpenseForm(props) {
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor='title'>Expense Title</label>
-          <input type='text' required id='title' ref={titleInputRef} />
+          <input type='text' required id='title' ref={titleInputRef} defaultValue={props.expense?.title}/>
         </div>
         <div className={classes.control}>
           <label htmlFor='image'>Expense Image</label>
@@ -43,7 +44,7 @@ function NewExpenseForm(props) {
         </div>
         <div className={classes.control}>
           <label htmlFor='address'>Address</label>
-          <input type='text' required id='address' ref={addressInputRef} />
+          <input type='text' required id='address' ref={addressInputRef} defaultValue={props.expense?.address}/>
         </div>
         <div className={classes.control}>
           <label htmlFor='description'>Description</label>
@@ -52,6 +53,7 @@ function NewExpenseForm(props) {
             required
             rows='5'
             ref={descriptionInputRef}
+            defaultValue={props.expense?.description}
           ></textarea>
         </div>
         <div className={classes.actions}>

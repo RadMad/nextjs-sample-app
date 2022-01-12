@@ -6,8 +6,8 @@ import classes from './ExpenseItem.module.css';
 function ExpenseItem(props) {
   const router = useRouter();
 
-  function showDetailsHandler() {
-    router.push('/' + props.id);
+  function editDetailsHandler() {
+    router.push('/expenses/' + props.id);
   }
 
   return (
@@ -21,7 +21,7 @@ function ExpenseItem(props) {
           <address>{props.address}</address>
         </div>
         <div className={classes.actions}>
-          <button onClick={showDetailsHandler}>Show Details</button>
+          <button onClick={editDetailsHandler}>Edit</button>
         </div>
       </Card>
     </li>
