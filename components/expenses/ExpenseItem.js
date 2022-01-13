@@ -1,23 +1,26 @@
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
-import Card from '../ui/Card';
-import classes from './ExpenseItem.module.css';
+import Card from "../ui/Card";
+import classes from "./ExpenseItem.module.css";
+import { useUser } from "@auth0/nextjs-auth0";
 
 function ExpenseItem(props) {
+  const { user } = useUser();
   const router = useRouter();
 
   function editDetailsHandler() {
-    router.push('/expenses/' + props.id);
+    router.push("/expenses/" + props.id);
   }
 
   async function deleteHandler() {
     await fetch(`/api/expenses/${props.id}/`, {
-      method: 'DELETE',
+      method: "DELETE",
+      body: JSON.stringify({ user_email: user.email }),
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
-    router.push('/expenses/');
+    router.push("/expenses/");
   }
 
   return (

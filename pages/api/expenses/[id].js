@@ -12,7 +12,7 @@ async function handler(req, res) {
     const expensesCollection = db.collection("expenses");
     const data = req.body;
     const result = await expensesCollection.replaceOne(
-      { _id: ObjectId(req.query) },
+      { _id: ObjectId(req.query), user_email: data.user_email },
       data
     );
 
@@ -28,10 +28,10 @@ async function handler(req, res) {
     const db = client.db();
     const expensesCollection = db.collection("expenses");
     const data = req.body;
-    const result = await expensesCollection.deleteOne(
-      { _id: ObjectId(req.query) },
-      data
-    );
+    const result = await expensesCollection.deleteOne({
+      _id: ObjectId(req.query),
+      user_email: data.user_email,
+    });
 
     console.log(result);
 

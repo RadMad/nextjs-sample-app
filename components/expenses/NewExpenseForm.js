@@ -1,7 +1,7 @@
-import { useRef } from 'react';
+import { useRef } from "react";
 
-import Card from '../ui/Card';
-import classes from './NewExpenseForm.module.css';
+import Card from "../ui/Card";
+import classes from "./NewExpenseForm.module.css";
 import { useUser } from "@auth0/nextjs-auth0";
 
 function NewExpenseForm(props) {
@@ -24,33 +24,53 @@ function NewExpenseForm(props) {
       image: enteredImage,
       address: enteredAddress,
       description: enteredDescription,
-      user_email: user.email
+      user_email: user.email,
     };
 
-    props.expense?.id ? props.onEditExpense(expenseData) : props.onAddExpense(expenseData);
+    props.expense?.id
+      ? props.onEditExpense(expenseData)
+      : props.onAddExpense(expenseData);
   }
 
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
-          <label htmlFor='title'>Expense Title</label>
-          <input type='text' required id='title' ref={titleInputRef} defaultValue={props.expense?.title}/>
-        </div>
-        <div className={classes.control}>
-          <label htmlFor='image'>Expense Image</label>
-          <input type='url' required id='image' ref={imageInputRef} defaultValue={props.expense?.image}/>
-        </div>
-        <div className={classes.control}>
-          <label htmlFor='address'>Address</label>
-          <input type='text' required id='address' ref={addressInputRef} defaultValue={props.expense?.address}/>
-        </div>
-        <div className={classes.control}>
-          <label htmlFor='description'>Description</label>
-          <textarea
-            id='description'
+          <label htmlFor="title">Expense Title</label>
+          <input
+            type="text"
             required
-            rows='5'
+            id="title"
+            ref={titleInputRef}
+            defaultValue={props.expense?.title}
+          />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor="image">Expense Image</label>
+          <input
+            type="url"
+            required
+            id="image"
+            ref={imageInputRef}
+            defaultValue={props.expense?.image}
+          />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor="address">Address</label>
+          <input
+            type="text"
+            required
+            id="address"
+            ref={addressInputRef}
+            defaultValue={props.expense?.address}
+          />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor="description">Description</label>
+          <textarea
+            id="description"
+            required
+            rows="5"
             ref={descriptionInputRef}
             defaultValue={props.expense?.description}
           ></textarea>
