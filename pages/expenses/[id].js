@@ -33,10 +33,7 @@ function EditExpensePage(props) {
         title="Edit Expense"
         description="Edit your expense."
       ></BootstrapHead>
-      <ExpenseForm
-        onEditExpense={editExpenseHandler}
-        expense={props.expense}
-      />
+      <ExpenseForm onEditExpense={editExpenseHandler} expense={props.expense} />
     </Fragment>
   );
 }
@@ -59,17 +56,27 @@ export const getServerSideProps = withPageAuthRequired({
 
     client.close();
 
-    return {
-      props: {
-        expense: {
-          title: expense.title,
-          amount: expense.amount,
-          image: expense.image,
-          id: expense._id.toString(),
-          description: expense.description,
+    if (expense) {
+      return {
+        props: {
+          expense: {
+            title: expense.title,
+            amount: expense.amount,
+            image: expense.image,
+            id: expense._id.toString(),
+            description: expense.description,
+          },
         },
-      },
-    };
+      };
+    } else {
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/",
+        },
+        props: {},
+      };
+    }
   },
 });
 

@@ -1,12 +1,19 @@
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 import Card from "../ui/Card";
 import classes from "./ExpenseItem.module.css";
+import ExpenseDeleteModal from "./ExpenseDeleteModal";
 import { useUser } from "@auth0/nextjs-auth0";
 
 function ExpenseItem(props) {
   const { user } = useUser();
   const router = useRouter();
+
+  const [show, setShow] = useState(false);
+
+  const handleCloseModal = () => setShow(false);
+  const handleShowModal = () => setShow(true);
 
   function editDetailsHandler() {
     router.push("/expenses/" + props.id);
@@ -34,11 +41,14 @@ function ExpenseItem(props) {
         <div className={classes.content}>
           <h3>{props.title}</h3>
           <p>${props.amount}</p>
-          <p>{props.description}</p>
+          {props.description && <p>{props.description}</p>}
         </div>
         <div className={classes.actions}>
           <button onClick={editDetailsHandler}>Edit</button>
-          <button onClick={deleteHandler}>Delete</button>
+          <button onClick={handleShowModal}>Delete</button>
+          <ExpenseDeleteModal
+            deleteHandler={deleteHandler} handleClose={handleCloseModal} show={show}
+          ></ExpenseDeleteModal>
         </div>
       </Card>
     </li>
