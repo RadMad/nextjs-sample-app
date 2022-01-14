@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { MongoClient, ObjectId } from "mongodb";
 import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
 
-import NewExpenseForm from "../../components/expenses/NewExpenseForm";
+import ExpenseForm from "../../components/expenses/ExpenseForm";
 
 function EditExpensePage(props) {
   const router = useRouter();
@@ -33,7 +33,7 @@ function EditExpensePage(props) {
         <title>Edit Expense</title>
         <meta name="description" content="Edit your expense." />
       </Head>
-      <NewExpenseForm
+      <ExpenseForm
         onEditExpense={editExpenseHandler}
         expense={props.expense}
       />
@@ -63,7 +63,7 @@ export const getServerSideProps = withPageAuthRequired({
       props: {
         expense: {
           title: expense.title,
-          address: expense.address,
+          amount: expense.amount,
           image: expense.image,
           id: expense._id.toString(),
           description: expense.description,

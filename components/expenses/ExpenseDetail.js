@@ -8,7 +8,7 @@ function ExpenseDetail(props) {
         alt={props.title}
       />
       <h1>{props.title}</h1>
-      <address>{props.address}</address>
+      <p>{props.amount}</p>
       <p>{props.description}</p>
     </section>
   );

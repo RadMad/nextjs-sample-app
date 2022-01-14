@@ -1,14 +1,14 @@
 import { useRef } from "react";
 
 import Card from "../ui/Card";
-import classes from "./NewExpenseForm.module.css";
+import classes from "./ExpenseForm.module.css";
 import { useUser } from "@auth0/nextjs-auth0";
 
-function NewExpenseForm(props) {
+function ExpenseForm(props) {
   const { user } = useUser();
   const titleInputRef = useRef();
   const imageInputRef = useRef();
-  const addressInputRef = useRef();
+  const amountInputRef = useRef();
   const descriptionInputRef = useRef();
 
   function submitHandler(event) {
@@ -16,13 +16,13 @@ function NewExpenseForm(props) {
 
     const enteredTitle = titleInputRef.current.value;
     const enteredImage = imageInputRef.current.value;
-    const enteredAddress = addressInputRef.current.value;
+    const enteredAmount = amountInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
 
     const expenseData = {
       title: enteredTitle,
       image: enteredImage,
-      address: enteredAddress,
+      amount: enteredAmount,
       description: enteredDescription,
       user_email: user.email,
     };
@@ -48,28 +48,26 @@ function NewExpenseForm(props) {
         <div className={classes.control}>
           <label htmlFor="image">Expense Image</label>
           <input
-            type="url"
-            required
+            type="url"            
             id="image"
             ref={imageInputRef}
             defaultValue={props.expense?.image}
           />
         </div>
         <div className={classes.control}>
-          <label htmlFor="address">Address</label>
+          <label htmlFor="amount">Amount</label>
           <input
-            type="text"
+            type="number"
             required
-            id="address"
-            ref={addressInputRef}
-            defaultValue={props.expense?.address}
+            id="amount"
+            ref={amountInputRef}
+            defaultValue={props.expense?.amount}
           />
         </div>
         <div className={classes.control}>
           <label htmlFor="description">Description</label>
           <textarea
             id="description"
-            required
             rows="5"
             ref={descriptionInputRef}
             defaultValue={props.expense?.description}
@@ -83,4 +81,4 @@ function NewExpenseForm(props) {
   );
 }
 
-export default NewExpenseForm;
+export default ExpenseForm;

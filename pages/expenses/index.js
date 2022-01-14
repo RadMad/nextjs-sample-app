@@ -40,7 +40,7 @@ export const getServerSideProps = withPageAuthRequired({
       props: {
         expenses: expenses.map((expense) => ({
           title: expense.title,
-          address: expense.address,
+          amount: expense.amount,
           image: expense.image,
           id: expense._id.toString(),
         })),
