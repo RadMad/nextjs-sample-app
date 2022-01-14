@@ -55,7 +55,7 @@ function ExpenseForm(props) {
           />
         </div>
         <div className={classes.control}>
-          <label htmlFor="amount">Amount</label>
+          <label htmlFor="amount">Amount in $USD</label>
           <input
             type="number"
             required

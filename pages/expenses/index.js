@@ -39,6 +39,7 @@ export const getServerSideProps = withPageAuthRequired({
           title: expense.title,
           amount: expense.amount,
           image: expense.image,
+          description: expense.description,
           id: expense._id.toString(),
         })),
       },

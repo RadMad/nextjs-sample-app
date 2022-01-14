@@ -11,6 +11,7 @@ function ExpenseList(props) {
           image={expense.image}
           title={expense.title}
           amount={expense.amount}
+          description={expense.description}
         />
       ))}
     </ul>
