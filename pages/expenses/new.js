@@ -1,6 +1,6 @@
 // our-domain.com/expenses/new
 import { Fragment } from 'react';
-import Head from 'next/head';
+import BootstrapHead from "../../components/layout/BootstrapHead";
 import { useRouter } from 'next/router';
 
 import ExpenseForm from '../../components/expenses/ExpenseForm';
@@ -26,13 +26,10 @@ function NewExpensePage() {
 
   return (
     <Fragment>
-      <Head>
-        <title>Add a New Expense</title>
-        <meta
-          name='description'
-          content='Add your own expenses.'
-        />
-      </Head>
+      <BootstrapHead
+        title="Add a New Expense"
+        description="Add your own expenses."
+      ></BootstrapHead>
       <ExpenseForm onAddExpense={addExpenseHandler} />
     </Fragment>
   );

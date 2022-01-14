@@ -1,6 +1,6 @@
 // our-domain.com/expenses/[id]
 import { Fragment } from "react";
-import Head from "next/head";
+import BootstrapHead from "../../components/layout/BootstrapHead";
 import { useRouter } from "next/router";
 import { MongoClient, ObjectId } from "mongodb";
 import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
@@ -29,10 +29,10 @@ function EditExpensePage(props) {
 
   return (
     <Fragment>
-      <Head>
-        <title>Edit Expense</title>
-        <meta name="description" content="Edit your expense." />
-      </Head>
+      <BootstrapHead
+        title="Edit Expense"
+        description="Edit your expense."
+      ></BootstrapHead>
       <ExpenseForm
         onEditExpense={editExpenseHandler}
         expense={props.expense}

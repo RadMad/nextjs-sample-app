@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import Head from "next/head";
+import BootstrapHead from "../../components/layout/BootstrapHead";
 import { MongoClient } from "mongodb";
 
 import ExpenseList from "../../components/expenses/ExpenseList";
@@ -8,13 +8,10 @@ import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
 function ExpensesPage(props) {
   return (
     <Fragment>
-      <Head>
-        <title>React Expenses</title>
-        <meta
-          name="description"
-          content="Browse a huge list of highly active React expenses!"
-        />
-      </Head>
+      <BootstrapHead
+        title="React Expenses"
+        description="Browse a huge list of highly active React expenses!"
+      ></BootstrapHead>
       <ExpenseList expenses={props.expenses} />;
     </Fragment>
   );
